@@ -118,32 +118,10 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        $user = $request->user();
-
-        if ($user->role == "perangkat_daerah") {
-            $asal_instansi = LocalOfficial::find($request->id_regional_device);
-        } elseif ($request->role == "kader" || $request->role == "tenaga_kesehatan" || $request->role == "trainer") {
-            $asal_instansi = Instance::find($request->id_instance);
-        } else {
-            $asal_instansi = "Lainnya";
-        }
-
-        // Logging
-        // $log = new Log();
-        // $log->content = $request->user() . ' check profile';
-        // $log->save();
-
         return response()->json([
             'status' => 'success',
             'message' => 'You have successfully request profile information',
-            'name' => $user->name,
-            'username' => $user->username,
-            'role' => $user->role,
-            // Pendidikan Terakhir
-            // Alamat Lengkap
-            'asal_instansi' => $asal_instansi,
-            'created_at' => $user->created_at,
-            'updated_at' => $user->updated_at,
+            'data' => $request->user(),
         ], 200);
     }
 
