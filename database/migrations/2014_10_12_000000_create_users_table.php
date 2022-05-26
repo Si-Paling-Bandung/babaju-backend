@@ -32,8 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('weight')->nullable();
             $table->string('skin_color')->nullable();
             $table->string('point')->default(0);
-            $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
