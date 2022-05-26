@@ -15,7 +15,20 @@ class CreateThreadBookmarksTable extends Migration
     {
         Schema::create('thread_bookmarks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_thread');
+
             $table->timestamps();
+
+            $table->foreign('id_user')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('id_thread')
+                ->references('id')
+                ->on('threads')
+                ->onDelete('cascade');
         });
     }
 

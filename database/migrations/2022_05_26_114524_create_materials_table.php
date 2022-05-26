@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThreadCategoriesTable extends Migration
+class CreateMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateThreadCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('thread_categories', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->string('material_name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateThreadCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thread_categories');
+        Schema::dropIfExists('materials');
     }
 }

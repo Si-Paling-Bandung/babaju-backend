@@ -15,6 +15,8 @@ class CreateEducationCategoriesTable extends Migration
     {
         Schema::create('education_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('photo');
             $table->timestamps();
         });
     }

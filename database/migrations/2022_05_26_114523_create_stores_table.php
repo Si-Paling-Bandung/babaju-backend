@@ -15,7 +15,22 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->string('name');
+            $table->text('description');
+            $table->date('born_date');
+            $table->string('email');
+            $table->string('lat');
+            $table->string('long');
+            $table->string('whatsapp_number');
+            $table->string('instagram');
+            $table->string('facebook');
             $table->timestamps();
+
+            $table->foreign('id_user')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

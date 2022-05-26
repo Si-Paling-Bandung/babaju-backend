@@ -15,7 +15,15 @@ class CreateBundlesTable extends Migration
     {
         Schema::create('bundles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_store');
+            $table->string('title');
+            $table->integer('discount_percentage');
             $table->timestamps();
+
+            $table->foreign('id_store')
+                ->references('id')
+                ->on('stores')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -15,7 +15,19 @@ class CreateProductCategoryTempsTable extends Migration
     {
         Schema::create('product_category_temps', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_product');
+            $table->unsignedBigInteger('id_product_category');
             $table->timestamps();
+
+            $table->foreign('id_product')
+                ->references('id')
+                ->on('products')
+                ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('id_product_category')
+                ->references('id')
+                ->on('product_categories')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

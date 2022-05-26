@@ -15,6 +15,7 @@ class CreateThreadKeywordsTable extends Migration
     {
         Schema::create('thread_keywords', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductReviewsTable extends Migration
+class CreateProductVariantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateProductReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_reviews', function (Blueprint $table) {
+        Schema::create('product_variants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_product');
-            $table->unsignedBigInteger('id_user');
-            $table->string('rating');
-            $table->string('review');
+            $table->unsignedBigInteger('id_product_size');
+            $table->unsignedBigInteger('id_product_color');
+            $table->integer('stock');
+            $table->bigInteger('price');
+            $table->bigInteger('discounted_price');
+            $table->string('photo');
             $table->timestamps();
 
             $table->foreign('id_product')
@@ -26,9 +29,14 @@ class CreateProductReviewsTable extends Migration
                 ->on('products')
                 ->onDelete('cascade');
 
-            $table->foreign('id_user')
+            $table->foreign('id_product_size')
                 ->references('id')
-                ->on('users')
+                ->on('product_sizes')
+                ->onDelete('cascade');
+
+            $table->foreign('id_product_color')
+                ->references('id')
+                ->on('product_colors')
                 ->onDelete('cascade');
         });
     }
@@ -40,6 +48,6 @@ class CreateProductReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_reviews');
+        Schema::dropIfExists('product_variants');
     }
 }

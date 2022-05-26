@@ -15,7 +15,19 @@ class CreateProductBundlesTable extends Migration
     {
         Schema::create('product_bundles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_product');
+            $table->unsignedBigInteger('id_bundle');
             $table->timestamps();
+
+            $table->foreign('id_product')
+                ->references('id')
+                ->on('products')
+                ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('id_bundle')
+                ->references('id')
+                ->on('bundles')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

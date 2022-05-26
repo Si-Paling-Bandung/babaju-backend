@@ -15,7 +15,19 @@ class CreateThreadKeywordTempsTable extends Migration
     {
         Schema::create('thread_keyword_temps', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_thread');
+            $table->unsignedBigInteger('id_thread_keyword');
             $table->timestamps();
+
+            $table->foreign('id_thread')
+                ->references('id')
+                ->on('threads')
+                ->onDelete('cascade');
+
+            $table->foreign('id_thread_keyword')
+                ->references('id')
+                ->on('thread_keywords')
+                ->onDelete('cascade');
         });
     }
 
