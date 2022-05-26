@@ -123,21 +123,21 @@
             </li>
 
 
-            <!-- Divider -->
+            {{--  <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
                 {{ __('User Management') }}
-            </div>
+            </div>  --}}
 
             <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Nav::isRoute('user*') }}">
+            {{--  <li class="nav-item {{ Nav::isRoute('user*') }}">
                 <a class="nav-link" href="{{ route('user') }}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>{{ __('Users') }}</span>
                 </a>
-            </li>
+            </li>  --}}
 
 
             <!-- Divider -->

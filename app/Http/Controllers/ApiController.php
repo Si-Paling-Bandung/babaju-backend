@@ -38,8 +38,11 @@ use Illuminate\Support\Str;
 
 use App\Models\Education;
 use App\Models\Product;
+use App\Models\ProductReview;
+use App\Models\ProductVariant;
 use App\Models\Thread;
 use App\Models\Project;
+use App\Models\ProjectFunding;
 
 class ApiController extends Controller
 {
@@ -112,6 +115,18 @@ class ApiController extends Controller
             ], 404);
         }
 
+        $total_funding = ProjectFunding::where('id_project', $id)->sum('amount');
+
+        if ($total_funding > $data->target) {
+            $total_funding = $data->target;
+        }
+
+        if(!$total_funding == 0){
+            $data->{"total_goal"} = round(($total_funding / $data->target ) * 100 , 2);
+        }else{
+            $data->{"total_goal"} = 0;
+        }
+
         return response()->json([
             'status' => 'success',
             'data' => $data,
@@ -127,6 +142,17 @@ class ApiController extends Controller
                 'message' => 'Data not found',
             ], 404);
         }
+
+        $product_variant = ProductVariant::where('id_product', $id)->get();
+        $data->{"product_variant"} = $product_variant;
+
+        $rating = 0;
+        if(!ProductReview::where('id_product', $id)->get()->count() == 0){
+            $rating = ProductReview::where('id_product', $id)->get()->sum('rating') / ProductReview::where('id_product', $id)->get()->count();
+        }
+
+        $data->{"rating"} = round($rating , 1);
+
 
         return response()->json([
             'status' => 'success',
