@@ -48,8 +48,8 @@ class ApiController extends Controller
 {
     public function home(Request $request)
     {
-        $auction = Product::where('type', '=', 'auction')->orderBy('created_at', 'desc')->offset(0)->limit(3)->get();
-        $rekomendasi = Product::where('type', '=', 'baru')->get();
+        $auction = Product::where('type', '=', 'lelang')->orderBy('created_at', 'desc')->offset(0)->limit(3)->get();
+        $rekomendasi = Product::all();
 
         foreach ($auction as $data) {
             $product_variant = ProductVariant::where('id_product', $data->id)->get();
