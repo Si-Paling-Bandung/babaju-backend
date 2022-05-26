@@ -53,14 +53,29 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Invalid login details',
-            ], 400);
+        if (is_numeric($request->get('email'))) {
+            if (!Auth::attempt([
+                'phone_number' => $request['email'],
+                'password' => $request['password']
+            ])) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Invalid phone number or password',
+                ], 401);
+            }
+        } else {
+            if (!Auth::attempt($request->only('email', 'password'))) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Invalid email or password',
+                ], 401);
+            }
         }
-
-        $user = User::where('email', $request['email'])->firstOrFail();
+        if (is_numeric($request->get('email'))) {
+            $user = User::where('phone_number', $request['email'])->firstOrFail();
+        } else {
+            $user = User::where('email', $request['email'])->firstOrFail();
+        }
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -218,6 +233,4 @@ class AuthController extends Controller
         // }
         // return $answer_array;
     }
-
-
 }
