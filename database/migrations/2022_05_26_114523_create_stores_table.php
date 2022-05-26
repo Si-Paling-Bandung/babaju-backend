@@ -17,14 +17,14 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->string('name');
-            $table->text('description');
-            $table->date('born_date');
-            $table->string('email');
-            $table->string('lat');
-            $table->string('long');
-            $table->string('whatsapp_number');
-            $table->string('instagram');
-            $table->string('facebook');
+            $table->text('description')->nullable();
+            $table->date('born_date')->nullable();
+            $table->string('email')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
+            $table->string('whatsapp_number')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

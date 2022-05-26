@@ -6,11 +6,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 @endpush
 @extends('layouts.admin')
-@section('title', 'Create User')
+@section('title', 'Create Product')
 
 @section('main-content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Create User') }}</h1>
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Create Product') }}</h1>
 
     @if (session('success'))
         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -31,7 +31,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('user.create.process') }}" autocomplete="off" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('product.create.process') }}" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div class="row">
 
@@ -48,22 +48,22 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="name">{{ __('Name') }}<span
                                                 class="small text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-user" name="name"
+                                        <input type="text" class="form-control form-control-Product" name="name"
                                             placeholder="{{ __('Name') }}" value="{{ old('name') }}" required
                                             autofocus>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-control-label" for="name">{{ __('Username') }}<span
+                                        <label class="form-control-label" for="name">{{ __('Productname') }}<span
                                                 class="small text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-user" name="username"
-                                            placeholder="{{ __('Username') }}" value="{{ old('username') }}" required>
+                                        <input type="text" class="form-control form-control-Product" name="Productname"
+                                            placeholder="{{ __('Productname') }}" value="{{ old('Productname') }}" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-control-label" for="password">{{ __('Password') }}<span
                                                 class="small text-danger">*</span></label>
-                                        <input type="password" class="form-control form-control-user" name="password"
+                                        <input type="password" class="form-control form-control-Product" name="password"
                                             placeholder="{{ __('Password') }}" required>
                                     </div>
 

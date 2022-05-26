@@ -16,7 +16,7 @@ class CreateThreadCategoriesTable extends Migration
         Schema::create('thread_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
