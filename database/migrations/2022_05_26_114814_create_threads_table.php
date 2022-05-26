@@ -20,7 +20,7 @@ class CreateThreadsTable extends Migration
             $table->string('cover_image');
             $table->string('title');
             $table->text('content');
-            $table->string('status');
+            $table->string('status')->default('publish');
             $table->timestamps();
             $table->softDeletes();
 

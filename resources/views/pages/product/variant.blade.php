@@ -103,7 +103,7 @@
                                 <th>Size</th>
                                 <th>Color</th>
                                 <th>Stock</th>
-                                <th width="100px">Action</th>
+                                <th width="200px">Action</th>
                             </tr>
                         </thead>
                         <tbody>

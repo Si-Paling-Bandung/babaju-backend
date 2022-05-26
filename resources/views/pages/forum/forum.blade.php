@@ -9,9 +9,12 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('product') }}",
+                    url: "{{ route('forum') }}",
                 },
                 columns: [{
+                        data: 'photo',
+                        name: 'photo'
+                    }, {
                         data: 'title',
                         name: 'title'
                     },
@@ -40,16 +43,16 @@
 @endpush
 
 @extends('layouts.admin')
-@section('title', 'Product Management')
+@section('title', 'Thread Management')
 
 @section('main-content')
     <!-- Page Heading -->
 
     <nav class="navbar navbar-light px-0 py-3">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Product Management') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Thread Management') }}</h1>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="{{ route('product.create') }}" class="btn btn-dark border-0">New Product</a>
+                <a href="{{ route('forum.create') }}" class="btn btn-dark border-0">New Thread</a>
             </li>
         </ul>
     </nav>
@@ -80,7 +83,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-danger">Products</h6>
+                    <h6 class="m-0 font-weight-bold text-danger">Threads</h6>
                 </div>
 
                 <div class="card-body">
@@ -88,7 +91,8 @@
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Thread Cover Image</th>
+                                <th>Thread Title</th>
                                 <th width="200px">Action</th>
                             </tr>
                         </thead>

@@ -6,11 +6,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 @endpush
 @extends('layouts.admin')
-@section('title', 'Create Product')
+@section('title', 'Create Thread')
 
 @section('main-content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Create Product') }}</h1>
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Create Thread') }}</h1>
 
     @if (session('success'))
         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -31,7 +31,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('product.create.process') }}" autocomplete="off" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('forum.create.process') }}" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div class="row">
 
@@ -54,29 +54,26 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-control-label" for="description">{{ __('Description') }}<span
+                                        <label class="form-control-label" for="content">{{ __('Content') }}<span
                                                 class="small text-danger">*</span></label>
-                                        <textarea class="form-control form-control-Product" title="description" placeholder="{{ __('description') }}" name="description" required
-                                            autofocus rows="20">{{ old('description') }}</textarea>
+                                        <textarea class="form-control form-control-Product" title="content" placeholder="{{ __('content') }}" name="content" required
+                                            autofocus rows="20">{{ old('content') }}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="type" class="form-control-label">{{ __('Type') }}</label>
-                                        <select name="type" id="type"
-                                            class="form-control @error('type') is-invalid @enderror">
-                                            <option value="baru">Baru</option>
-                                            <option value="bekas">Bekas</option>
-                                            <option value="sewa">Sewa</option>
-                                            <option value="lelang">Lelang</option>
-                                        </select>
+                                        <label class="form-control-label" for="cover_image">{{ __('Cover Image') }}<span
+                                                class="small text-danger">*</span></label>
+                                        <input type="file" class="form-control form-control-Product" title="cover_image"
+                                            placeholder="{{ __('cover_image') }}" value="{{ old('cover_image') }}" name="cover_image"
+                                            required autofocus>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="material" class="form-control-label">{{ __('Material') }}</label>
-                                        <select name="material" id="instance"
-                                            class="form-control @error('material') is-invalid @enderror">
-                                            @foreach ($data_material as $it)
-                                                <option value="{{ $it->id }}">{{ $it->material_name }}</option>
+                                        <label for="thread_category" class="form-control-label">{{ __('Category') }}</label>
+                                        <select name="thread_category" id="instance"
+                                            class="form-control @error('thread_category') is-invalid @enderror">
+                                            @foreach ($data_category as $it)
+                                                <option value="{{ $it->id }}">{{ $it->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
