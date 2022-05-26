@@ -12,8 +12,19 @@
                     url: "{{ route('product.variant', $id) }}",
                 },
                 columns: [{
-                        data: 'title',
-                        name: 'title'
+                        data: 'photo',
+                        name: 'photo'
+                    }, {
+                        data: 'size',
+                        name: 'size'
+                    },
+                    {
+                        data: 'color',
+                        name: 'color'
+                    },
+                    {
+                        data: 'stock',
+                        name: 'stock'
                     },
                     {
                         data: 'action',
@@ -88,7 +99,10 @@
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Photo</th>
+                                <th>Size</th>
+                                <th>Color</th>
+                                <th>Stock</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>

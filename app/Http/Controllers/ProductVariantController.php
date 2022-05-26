@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductColor;
+use App\Models\ProductSize;
 use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class ProductVariantController extends Controller
 {
@@ -20,10 +23,19 @@ class ProductVariantController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('product.variant.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
+                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('product.variant.delete', [$data->id_product,$data->id]) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
                     return $button;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('size', function ($data) {
+                    return ProductSize::find($data->id_product_size)->size;
+                })
+                ->addColumn('color', function ($data) {
+                    return ProductColor::find($data->id_product_color)->color_name;
+                })
+                ->addColumn('photo', function ($data) {
+                    return '<img src="' . Storage::url($data->photo) . '" width="100px" height="100px" />';
+                })
+                ->rawColumns(['action', 'size', 'color','photo'])
                 ->make(true);
         }
         return view('pages.product.variant', compact('id'));
@@ -34,10 +46,11 @@ class ProductVariantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_view()
+    public function create_view(Request $request, $id)
     {
-        $data_material = \App\Models\Material::all();
-        return view('pages.product.variant-create', compact('data_material'));
+        $data_color = \App\Models\ProductColor::all();
+        $data_size = \App\Models\ProductSize::all();
+        return view('pages.product.variant-create', compact('data_color', 'data_size', 'id'));
     }
 
     /**
@@ -45,24 +58,28 @@ class ProductVariantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_process(Request $request)
+    public function create_process(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'type' => 'required',
-            'material'  => 'required',
+            'stock' => 'required',
+            'price' => 'required',
+            'discounted_price' => 'required',
+            'photo'  => 'required',
+            'size'  => 'required',
+            'color'  => 'required',
         ]);
 
-        $product = new Product();
-        $product->id_store = Store::where('id_user', Auth::user()->id)->first()->id;
-        $product->title = $request->title;
-        $product->description = $request->description;
-        $product->type = $request->type;
-        $product->id_material = $request->material;
-        $product->save();
+        $product_variant = new ProductVariant();
+        $product_variant->id_product = $id;
+        $product_variant->id_product_color = $request->color;
+        $product_variant->id_product_size = $request->size;
+        $product_variant->stock = $request->stock;
+        $product_variant->price = $request->price;
+        $product_variant->discounted_price = $request->discounted_price;
+        $product_variant->photo = Storage::disk('public')->put('product-variant', $request->file('photo'));
+        $product_variant->save();
 
-        return redirect()->route('product.variant')->withSuccess('Product created successfully.');
+        return redirect()->route('product.variant', compact('id'))->withSuccess('Product created successfully.');
     }
 
     /**
@@ -76,7 +93,7 @@ class ProductVariantController extends Controller
         $product = ProductVariant::find($id);
         $product->delete();
 
-        return redirect()->route('product.variant')->withSuccess('Product Variant deleted successfully.');
+        return redirect()->route('product.variant', compact('id'))->withSuccess('Product Variant deleted successfully.');
     }
 
     /**
