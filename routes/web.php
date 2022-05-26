@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // ============================================================================
 
 Route::get('/', function () {
-    return "Welcome to API";
+    return view('welcome');
 });
 
 // =============================== H A P U S ================================

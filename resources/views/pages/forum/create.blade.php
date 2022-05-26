@@ -69,7 +69,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="thread_category" class="form-control-label">{{ __('Category') }}</label>
+                                        <label for="thread_category" class="form-control-label">{{ __('Category') }}<span
+                                            class="small text-danger">*</span></label>
                                         <select name="thread_category" id="instance"
                                             class="form-control @error('thread_category') is-invalid @enderror">
                                             @foreach ($data_category as $it)

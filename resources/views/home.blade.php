@@ -28,8 +28,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ __('Pendamping PRIMA') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['kader'] }}</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ __('Product') }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['product'] }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -45,8 +45,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">{{ __('Tenaga Kesehatan') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['tenaga_kehesatan'] }}</div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">{{ __('Thread') }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['thread'] }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -62,8 +62,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">{{ __('Perangkat Daerah') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['perangkat_daerah'] }}</div>
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">{{ __('Education') }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['education'] }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -79,8 +79,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{ __('Course') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['courses'] }}</div>
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{ __('Crowd Funding') }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['crowdfunding'] }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>

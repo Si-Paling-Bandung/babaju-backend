@@ -61,7 +61,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="type" class="form-control-label">{{ __('Type') }}</label>
+                                        <label for="type" class="form-control-label">{{ __('Type') }}<span
+                                            class="small text-danger">*</span></label>
                                         <select name="type" id="type"
                                             class="form-control @error('type') is-invalid @enderror">
                                             <option value="baru">Baru</option>
@@ -72,7 +73,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="material" class="form-control-label">{{ __('Material') }}</label>
+                                        <label for="material" class="form-control-label">{{ __('Material') }}<span
+                                            class="small text-danger">*</span></label>
                                         <select name="material" id="instance"
                                             class="form-control @error('material') is-invalid @enderror">
                                             @foreach ($data_material as $it)

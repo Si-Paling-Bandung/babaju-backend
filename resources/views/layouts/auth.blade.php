@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="bg-gradient-danger min-vh-100 d-flex justify-content-center align-items-center">
+<body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
 
     @yield('main-content')
 

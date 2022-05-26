@@ -23,9 +23,9 @@ class CreateEducationTable extends Migration
             $table->string('lat');
             $table->string('lang');
             $table->string('location');
-            $table->string('attachment');
+            $table->string('attachment')->nullable();
             $table->text('form_registration');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

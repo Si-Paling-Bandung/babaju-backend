@@ -9,19 +9,14 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('user') }}",
+                    url: "{{ route('education') }}",
                 },
                 columns: [{
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'username',
-                        name: 'username'
-                    },
-                    {
-                        data: 'role',
-                        name: 'role'
+                        data: 'photo',
+                        name: 'photo'
+                    }, {
+                        data: 'title',
+                        name: 'title'
                     },
                     {
                         data: 'action',
@@ -48,16 +43,16 @@
 @endpush
 
 @extends('layouts.admin')
-@section('title', 'User Management')
+@section('title', 'Education Management')
 
 @section('main-content')
     <!-- Page Heading -->
 
     <nav class="navbar navbar-light px-0 py-3">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('User Management') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Education Management') }}</h1>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="{{ route('user.create') }}" class="btn btn-dark border-0">New User</a>
+                <a href="{{ route('education.create') }}" class="btn btn-dark border-0">New Education</a>
             </li>
         </ul>
     </nav>
@@ -88,7 +83,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Education Posts</h6>
                 </div>
 
                 <div class="card-body">
@@ -96,10 +91,9 @@
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Role</th>
-                                <th width="100px">Action</th>
+                                <th>Education Post Cover Image</th>
+                                <th>Education Post Title</th>
+                                <th width="200px">Action</th>
                             </tr>
                         </thead>
                         <tbody>

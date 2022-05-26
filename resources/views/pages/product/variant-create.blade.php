@@ -82,7 +82,8 @@
                                             required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="color" class="form-control-label">{{ __('Color') }}</label>
+                                        <label for="color" class="form-control-label">{{ __('Color') }}<span
+                                            class="small text-danger">*</span></label>
                                         <select name="color" id="color"
                                             class="form-control @error('color') is-invalid @enderror">
                                             @foreach ($data_color as $it)
@@ -92,7 +93,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="size" class="form-control-label">{{ __('Size') }}</label>
+                                        <label for="size" class="form-control-label">{{ __('Size') }}<span
+                                            class="small text-danger">*</span></label>
                                         <select name="size" id="size"
                                             class="form-control @error('size') is-invalid @enderror">
                                             @foreach ($data_size as $it)

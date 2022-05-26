@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Topics;
 use App\User;
 use App\Models\Product;
+use App\Models\Thread;
+use App\Models\Education;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,16 +29,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $kader = User::where('role','=','kader')->count();
-        $tenaga_kehesatan = User::where('role','=','tenaga_kesehatan')->count();
-        $perangkat_daerah = User::where('role','=','perangkat_daerah')->count();
-        $courses = Product::all()->count();
+        $product = Product::all()->count();
+        $thread = Thread::all()->count();
+        $education = Education::all()->count();
+        $crowdfunding = Project::all()->count();
 
         $widget = [
-            'kader' => $kader,
-            'tenaga_kehesatan' => $tenaga_kehesatan,
-            'perangkat_daerah' => $perangkat_daerah,
-            'courses' => $courses,
+            'product' => $product,
+            'thread' => $thread,
+            'education' => $education,
+            'crowdfunding' => $crowdfunding,
         ];
 
         return view('home', compact('widget'));
