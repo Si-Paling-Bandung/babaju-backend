@@ -19,7 +19,8 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'username' => 'required|string|min:11|unique:users',
+            'email' => 'required|email|unique:users,email',
+            'phone_number' => 'required|unique:users,phone_number',
             'password' => 'required|string|min:8',
         ]);
 
@@ -32,16 +33,12 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'username' => $request->username,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 
-        // Logging
-        // $log = new Log();
-        // $log->content = $user . ' registered';
-        // $log->save();
-
-        event(new Registered($user));
+        // event(new Registered($user));
 
         return response()
             ->json([
@@ -53,6 +50,18 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $validator->errors(),
+            ], 400);
+        }
+
         if (is_numeric($request->get('email'))) {
             if (!Auth::attempt([
                 'phone_number' => $request['email'],

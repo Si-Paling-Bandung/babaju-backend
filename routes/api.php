@@ -26,6 +26,7 @@ use App\Http\Controllers\ApiController;
 
 // ==================================== Authentication ===================================
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
 // ======================================== Others =======================================
 Route::get('/landing', [ApiController::class, 'landing']);
@@ -49,54 +50,22 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // ================================== Authentication =================================
     Route::get('/logout', [AuthController::class, 'logout']);
 
+    // ====================================== History ======================================
+    Route::post('/profile/update/tb-bb-color', [ApiController::class, 'update_tb_bb_color']);
+
+
+
+
+
+
+
+    
+
+
+
     // ==================================== Profile ======================================
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/profile/update', [AuthController::class, 'update_profile']);
-
-    // ====================================== History ======================================
-    Route::get('/history', [ApiController::class, 'history']);
-
-    // ====================================================================================
-    // ====================================== Course ======================================
-    // ====================================================================================
-
-    // ================================== Topic & Lesson ==================================
-    Route::get('/topic', [ApiController::class, 'topic']); //Topic
-    Route::get('/topic/{id_topic}', [ApiController::class, 'lo']); //Detail Topic
-    Route::get('/lesson/{id_lesson}', [ApiController::class, 'lesson']); // Detail Lesson
-
-    // ===================================== Question ======================================
-    Route::get('/question/{id_topic}/{section}', [ApiController::class, 'question']);
-    Route::post('/answer-question/{id_topic}/{section}', [ApiController::class, 'answerQuestion']);
-    Route::get('/result/{id_topic}/{section}', [ApiController::class, 'answerResult']); // Nggak masuk laporan
-
-    // ======================================= Task ========================================
-    // Iterasi 2
-    Route::get('/task/{id_topic}', [ApiController::class, 'task']);
-    Route::post('/task/{id_topic}', [ApiController::class, 'answerTask']);
-
-    // ===================================== Feedback & Rating  ====================================
-    Route::post('/feedback/{id_topic}', [ApiController::class, 'feedback_add']); //Feedback
-    Route::post('/rating/{id_topic}', [ApiController::class, 'rating_add']); //Rating
-
-    // ======================================= Certificate ========================================
-    // Iterasi 2
-    Route::get('/certificate', [ApiController::class, 'certificate_list']);
-    Route::get('/certificate/template', [ApiController::class, 'certificate_template']);
-    Route::get('/certificate/{id_topic}', [ApiController::class, 'certificate']);
-    Route::post('/certificate/{id_topic}', [ApiController::class, 'certificate_upload']);
-
-    // ====================================================================================
-    // ==================================== End Course ====================================
-    // ====================================================================================
-
-    // =====================================  Favorit ====================================
-    Route::get('/favorit', [ApiController::class, 'favorit_index_lesson']);
-    Route::post('/favorit/add/{id_lesson}', [ApiController::class, 'favorit_add_lesson']);
-    Route::delete('/favorit/delete/{id_lesson}', [ApiController::class, 'favorit_remove_lesson']);
-
-    // ===================================== Announcement  ====================================
-    Route::get('/announcement', [ApiController::class, 'announcement']);
 });
 
 // =======================================================================================

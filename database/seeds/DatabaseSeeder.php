@@ -18,16 +18,14 @@ class DatabaseSeeder extends Seeder
     {
         $user = [
             [
-                'first_name' => 'Admin',
-                'last_name' => 'Admin',
+                'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'role' => 'admin',
                 'phone_number' => '1234',
                 'password' => bcrypt('password'),
             ],
             [
-                'first_name' => 'user',
-                'last_name' => 'user',
+                'name' => 'User',
                 'email' => 'user@gmail.com',
                 'role' => 'user',
                 'phone_number' => '1235',
