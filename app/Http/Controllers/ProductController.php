@@ -39,9 +39,7 @@ class ProductController extends Controller
      */
     public function create_view()
     {
-        $data_instance = Instance::all();
-        $data_regional = LocalOfficial::all();
-        return view('pages.user.create', compact('data_instance', 'data_regional'));
+        return view('pages.product.create');
     }
 
     /**
