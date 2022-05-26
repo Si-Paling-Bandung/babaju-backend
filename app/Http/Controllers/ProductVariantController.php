@@ -74,6 +74,7 @@ class ProductVariantController extends Controller
         $product_variant->id_product_color = $request->color;
         $product_variant->id_product_size = $request->size;
         $product_variant->stock = $request->stock;
+        $product_variant->sold = rand(10,10000);
         $product_variant->price = $request->price;
         $product_variant->discounted_price = $request->discounted_price;
         $product_variant->photo = Storage::disk('public')->put('product-variant', $request->file('photo'));

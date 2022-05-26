@@ -24,6 +24,7 @@ class ProductController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
                     $button = '<a href="' . route('product.variant', $data->id) . '" type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">Add Variant</a>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<a href="' . route('product.review', $data->id) . '" type="button" name="edit" id="' . $data->id . '" class="edit btn btn-warning btn-sm">Add Review</a>';
                     $button .= '&nbsp;&nbsp;&nbsp;<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('product.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
                     return $button;
                 })

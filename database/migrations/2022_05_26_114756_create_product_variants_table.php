@@ -19,6 +19,7 @@ class CreateProductVariantsTable extends Migration
             $table->unsignedBigInteger('id_product_size');
             $table->unsignedBigInteger('id_product_color');
             $table->integer('stock');
+            $table->integer('sold')->default(0);
             $table->bigInteger('price');
             $table->bigInteger('discounted_price');
             $table->string('photo');

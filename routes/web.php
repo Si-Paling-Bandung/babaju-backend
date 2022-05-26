@@ -77,6 +77,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/{id}/variant/create', 'ProductVariantController@create_view')->name('.variant.create');
             Route::post('/{id}/variant/create', 'ProductVariantController@create_process')->name('.variant.create.process');
             Route::get('/{id}/variant/{id_product_variant}/delete', 'ProductVariantController@delete')->name('.variant.delete');
+
+            Route::get('/{id}/review', 'ProductReviewController@index')->name('.review');
+            Route::get('/{id}/review/create', 'ProductReviewController@create_view')->name('.review.create');
+            Route::post('/{id}/review/create', 'ProductReviewController@create_process')->name('.review.create.process');
+            Route::get('/{id}/review/{id_product_review}/delete', 'ProductReviewController@delete')->name('.review.delete');
         });
 
         Route::prefix('forum')->name('forum')->group(function () {
