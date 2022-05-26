@@ -6,11 +6,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 @endpush
 @extends('layouts.admin')
-@section('title', 'Create Product')
+@section('title', 'Create Product Variant')
 
 @section('main-content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Create Product') }}</h1>
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Create Product Variant') }}</h1>
 
     @if (session('success'))
         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">

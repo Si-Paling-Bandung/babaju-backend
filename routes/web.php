@@ -72,6 +72,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/create', 'ProductController@create_view')->name('.create');
             Route::post('/create', 'ProductController@create_process')->name('.create.process');
             Route::get('/{id}/delete}', 'ProductController@delete')->name('.delete');
+
+            Route::get('/{id}/variant', 'ProductVariantController@index')->name('.variant');
+            Route::get('/{id}/variant/create', 'ProductController@create_view')->name('.variant.create');
+            Route::post('/{id}/variant/create', 'ProductController@create_process')->name('.variant.create.process');
+            Route::get('/{id}/variant/{id_product_variant}/delete}', 'ProductController@delete')->name('.variant.delete');
         });
 
         Route::prefix('forum')->name('forum')->group(function () {

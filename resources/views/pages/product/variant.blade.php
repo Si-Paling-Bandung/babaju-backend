@@ -9,7 +9,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('product') }}",
+                    url: "{{ route('product.variant', $id) }}",
                 },
                 columns: [{
                         data: 'title',
@@ -40,16 +40,16 @@
 @endpush
 
 @extends('layouts.admin')
-@section('title', 'Product Management')
+@section('title', 'Product Variant Management')
 
 @section('main-content')
     <!-- Page Heading -->
 
     <nav class="navbar navbar-light px-0 py-3">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Product Management') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Product Variant Management') }}</h1>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="{{ route('product.create') }}" class="btn btn-dark border-0">New Product</a>
+                <a href="{{ route('product.variant.create', $id) }}" class="btn btn-dark border-0">New Product Variant</a>
             </li>
         </ul>
     </nav>
@@ -80,7 +80,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-danger">Products</h6>
+                    <h6 class="m-0 font-weight-bold text-danger">Product Variants</h6>
                 </div>
 
                 <div class="card-body">
