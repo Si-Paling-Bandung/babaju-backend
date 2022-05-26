@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,10 @@ class ProductController extends Controller
                     $button .= '&nbsp;&nbsp;&nbsp;<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('product.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
                     return $button;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('variant', function ($data) {
+                    return ProductVariant::where('id_product', $data->id)->count();
+                })
+                ->rawColumns(['action','variant'])
                 ->make(true);
         }
 

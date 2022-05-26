@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/funding/{id}', [ApiController::class, 'detail_funding']);
 
     // ====================================== Komunitas ======================================
+    Route::get('/forum', [ApiController::class, 'forum']);
     Route::get('/berita/{id}', [ApiController::class, 'detail_berita']);
 
     // ====================================== Education ======================================

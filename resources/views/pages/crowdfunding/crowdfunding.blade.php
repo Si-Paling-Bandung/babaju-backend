@@ -19,6 +19,10 @@
                         name: 'title'
                     },
                     {
+                        data: 'target',
+                        name: 'target'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -93,6 +97,7 @@
                             <tr>
                                 <th>Crowd Funding Post Cover Image</th>
                                 <th>Crowd Funding Post Title</th>
+                                <th>Crowd Funding Target</th>
                                 <th width="200px">Action</th>
                             </tr>
                         </thead>

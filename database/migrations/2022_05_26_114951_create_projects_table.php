@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('cover_image');
             $table->string('title');
             $table->text('content');
+            $table->integer('target');
             $table->string('lat');
             $table->string('lang');
             $table->string('location');

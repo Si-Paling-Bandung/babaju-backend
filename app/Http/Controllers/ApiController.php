@@ -66,44 +66,87 @@ class ApiController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'You have successfully update your profile !',
             'data' => $user
         ], 200);
     }
 
     public function detail_tips(Request $request, $id)
     {
+        $data = Education::find($id);
+        if (!$data) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Data not found',
+            ], 404);
+        }
+
         return response()->json([
             'status' => 'success',
-            'message' => 'You have successfully update your profile !',
-            'data' => Education::find($id),
+            'data' => $data,
         ], 200);
     }
 
     public function detail_berita(Request $request, $id)
     {
+        $data = Thread::find($id);
+        if (!$data) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Data not found',
+            ], 404);
+        }
+
         return response()->json([
             'status' => 'success',
-            'message' => 'You have successfully update your profile !',
-            'data' => Thread::find($id),
+            'data' => $data,
         ], 200);
     }
 
     public function detail_funding(Request $request, $id)
     {
+        $data = Project::find($id);
+        if (!$data) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Data not found',
+            ], 404);
+        }
+
         return response()->json([
             'status' => 'success',
-            'message' => 'You have successfully update your profile !',
-            'data' => Project::find($id),
+            'data' => $data,
         ], 200);
     }
 
     public function detail_produk(Request $request, $id)
     {
+        $data = Product::find($id);
+        if (!$data) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Data not found',
+            ], 404);
+        }
+
         return response()->json([
             'status' => 'success',
-            'message' => 'You have successfully update your profile !',
-            'data' => Product::find($id),
+            'data' => $data,
+        ], 200);
+    }
+
+    public function forum(Request $request)
+    {
+        $post = Thread::all();
+        $news = Thread::all();
+        $tips = Education::all();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'post' => $post,
+                'news' => $news,
+                'tips' => $tips,
+            ]
         ], 200);
     }
 }

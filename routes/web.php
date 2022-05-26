@@ -76,7 +76,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/{id}/variant', 'ProductVariantController@index')->name('.variant');
             Route::get('/{id}/variant/create', 'ProductVariantController@create_view')->name('.variant.create');
             Route::post('/{id}/variant/create', 'ProductVariantController@create_process')->name('.variant.create.process');
-            Route::get('/{id}/variant/{id_product_variant}/delete}', 'ProductVariantController@delete')->name('.variant.delete');
+            Route::get('/{id}/variant/{id_product_variant}/delete', 'ProductVariantController@delete')->name('.variant.delete');
         });
 
         Route::prefix('forum')->name('forum')->group(function () {
@@ -98,6 +98,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/create', 'ProjectController@create_view')->name('.create');
             Route::post('/create', 'ProjectController@create_process')->name('.create.process');
             Route::get('/{id}/delete}', 'ProjectController@delete')->name('.delete');
+
+            Route::get('/{id}/funding', 'ProjectFundingController@index')->name('.funding');
+            Route::get('/{id}/funding/create', 'ProjectFundingController@create_view')->name('.funding.create');
+            Route::post('/{id}/funding/create', 'ProjectFundingController@create_process')->name('.funding.create.process');
+            Route::get('/{id}/funding/{id_product_variant}/delete', 'ProjectFundingController@delete')->name('.funding.delete');
         });
     });
 });

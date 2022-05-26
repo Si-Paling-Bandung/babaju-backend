@@ -101,7 +101,7 @@
             <!-- Nav Item - Education -->
             <li class="nav-item {{ Nav::isRoute('education*') }}">
                 <a class="nav-link" href="{{ route('education') }}">
-                    <i class="fas fa-fw fa-bell"></i>
+                    <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>{{ __('Education') }}</span>
                 </a>
             </li>
@@ -117,7 +117,7 @@
             <!-- Nav Item - Crowdfunding -->
             <li class="nav-item {{ Nav::isRoute('crowdfunding*') }}">
                 <a class="nav-link" href="{{ route('crowdfunding') }}">
-                    <i class="fas fa-fw fa-bell"></i>
+                    <i class="fas fa-fw fa-hand-rock"></i>
                     <span>{{ __('Crowdfunding') }}</span>
                 </a>
             </li>

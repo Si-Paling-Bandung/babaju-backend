@@ -23,7 +23,8 @@ class ProjectController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('crowdfunding.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
+                    $button = '<a href="' . route('crowdfunding.funding', $data->id) . '" type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">Add Funding</a>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('crowdfunding.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
                     return $button;
                 })->addColumn('photo', function ($data) {
                     return '<img src="' . Storage::url($data->cover_image) . '" width="100px" height="100px" />';
@@ -58,6 +59,7 @@ class ProjectController extends Controller
             'cover_image' => 'required',
             'title' => 'required',
             'content'  => 'required',
+            'target'  => 'required',
             'lat'  => 'required',
             'lang'  => 'required',
             'location'  => 'required',
@@ -70,6 +72,7 @@ class ProjectController extends Controller
         $education->cover_image = Storage::disk('public')->put('education', $request->file('cover_image'));
         $education->title = $request->title;
         $education->content = $request->content;
+        $education->target = $request->target;
         $education->lat = $request->lat;
         $education->lang = $request->lang;
         $education->location = $request->location;

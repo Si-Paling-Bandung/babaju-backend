@@ -60,6 +60,15 @@
                                             required autofocus rows="20">{{ old('content') }}</textarea>
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="target">{{ __('Target Funding') }}<span
+                                                class="small text-danger">*</span></label>
+                                        <input type="number" class="form-control form-control-Product" target="target"
+                                            placeholder="{{ __('target') }}" value="{{ old('target') }}" name="target"
+                                            required autofocus>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="form-control-label" for="lat">{{ __('Lat') }}<span
                                                 class="small text-danger">*</span></label>

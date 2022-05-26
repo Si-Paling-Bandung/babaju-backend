@@ -9,14 +9,15 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('product') }}",
+                    url: "{{ route('crowdfunding.funding', $id) }}",
                 },
                 columns: [{
-                        data: 'title',
-                        name: 'title'
-                    }, {
-                        data: 'variant',
-                        name: 'variant'
+                        data: 'amount',
+                        name: 'amount'
+                    },
+                    {
+                        data: 'notes',
+                        name: 'notes'
                     },
                     {
                         data: 'action',
@@ -43,16 +44,16 @@
 @endpush
 
 @extends('layouts.admin')
-@section('title', 'Product Management')
+@section('title', 'Crowd Funding Management')
 
 @section('main-content')
     <!-- Page Heading -->
 
     <nav class="navbar navbar-light px-0 py-3">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Product Management') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Crowd Funding Management') }}</h1>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="{{ route('product.create') }}" class="btn btn-dark border-0">New Product</a>
+                <a href="{{ route('crowdfunding.funding.create', $id) }}" class="btn btn-dark border-0">New Funding</a>
             </li>
         </ul>
     </nav>
@@ -83,7 +84,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Crowd Funding Posts</h6>
                 </div>
 
                 <div class="card-body">
@@ -91,8 +92,8 @@
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Variant</th>
+                                <th>Funding Amount</th>
+                                <th>Funding Notes</th>
                                 <th width="200px">Action</th>
                             </tr>
                         </thead>

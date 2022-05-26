@@ -23,7 +23,7 @@ class ProductVariantController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('product.variant.delete', [$data->id_product,$data->id]) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
+                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('product.variant.delete', [$data->id_product, $data->id]) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
                     return $button;
                 })
                 ->addColumn('size', function ($data) {
@@ -35,7 +35,7 @@ class ProductVariantController extends Controller
                 ->addColumn('photo', function ($data) {
                     return '<img src="' . Storage::url($data->photo) . '" width="100px" height="100px" />';
                 })
-                ->rawColumns(['action', 'size', 'color','photo'])
+                ->rawColumns(['action', 'size', 'color', 'photo'])
                 ->make(true);
         }
         return view('pages.product.variant', compact('id'));
@@ -88,12 +88,12 @@ class ProductVariantController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($product_id, $id)
     {
         $product = ProductVariant::find($id);
         $product->delete();
 
-        return redirect()->route('product.variant', compact('id'))->withSuccess('Product Variant deleted successfully.');
+        return redirect()->route('product.variant', $product_id)->withSuccess('Product Variant deleted successfully.');
     }
 
     /**
