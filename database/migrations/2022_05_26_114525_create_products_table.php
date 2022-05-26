@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('type');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_store')
                 ->references('id')

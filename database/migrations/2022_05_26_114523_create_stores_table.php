@@ -26,6 +26,7 @@ class CreateStoresTable extends Migration
             $table->string('instagram');
             $table->string('facebook');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_user')
                 ->references('id')

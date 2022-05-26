@@ -18,6 +18,7 @@ class CreateProductColorsTable extends Migration
             $table->string('color_code');
             $table->string('color_name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

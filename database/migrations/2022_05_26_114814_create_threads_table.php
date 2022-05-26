@@ -22,6 +22,7 @@ class CreateThreadsTable extends Migration
             $table->text('content');
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_user')
                 ->references('id')

@@ -26,6 +26,7 @@ class CreateProjectsTable extends Migration
             $table->string('attachment');
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_user')
                 ->references('id')

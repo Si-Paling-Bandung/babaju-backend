@@ -19,6 +19,7 @@ class CreateBundlesTable extends Migration
             $table->string('title');
             $table->integer('discount_percentage');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_store')
                 ->references('id')

@@ -27,6 +27,7 @@ class CreateEducationTable extends Migration
             $table->text('form_registration');
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_user')
                 ->references('id')

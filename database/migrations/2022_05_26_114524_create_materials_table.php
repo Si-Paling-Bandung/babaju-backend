@@ -17,6 +17,7 @@ class CreateMaterialsTable extends Migration
             $table->id();
             $table->string('material_name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
