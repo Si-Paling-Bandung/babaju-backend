@@ -46,6 +46,78 @@ use App\Models\ProjectFunding;
 
 class ApiController extends Controller
 {
+    public function home(Request $request)
+    {
+        $auction = Product::where('type', '=', 'auction')->orderBy('created_at', 'desc')->offset(0)->limit(3)->get();
+        $rekomendasi = Product::where('type', '=', 'baru')->get();
+
+        foreach ($auction as $data) {
+            $product_variant = ProductVariant::where('id_product', $data->id)->get();
+            $data->{"product_variant"} = $product_variant;
+
+            $rating = 0;
+            if (!ProductReview::where('id_product', $data->id)->get()->count() == 0) {
+                $rating = ProductReview::where('id_product', $data->id)->get()->sum('rating') / ProductReview::where('id_product', $data->id)->get()->count();
+            }
+
+            $data->{"rating"} = round($rating, 1);
+        }
+
+
+        foreach ($rekomendasi as $data) {
+            $product_variant = ProductVariant::where('id_product', $data->id)->get();
+            $data->{"product_variant"} = $product_variant;
+
+            $rating = 0;
+            if (!ProductReview::where('id_product', $data->id)->get()->count() == 0) {
+                $rating = ProductReview::where('id_product', $data->id)->get()->sum('rating') / ProductReview::where('id_product', $data->id)->get()->count();
+            }
+
+            $data->{"rating"} = round($rating, 1);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'auction' => $auction,
+                'rekomendasi' => $rekomendasi
+            ]
+        ], 200);
+    }
+
+    public function search(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'search_text' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $validator->errors(),
+            ], 400);
+        }
+
+        $data_all = Product::where('title', 'like', '%' . $request->search_text . '%')->get();
+
+        foreach ($data_all as $data) {
+            $product_variant = ProductVariant::where('id_product', $data->id)->get();
+            $data->{"product_variant"} = $product_variant;
+
+            $rating = 0;
+            if (!ProductReview::where('id_product', $data->id)->get()->count() == 0) {
+                $rating = ProductReview::where('id_product', $data->id)->get()->sum('rating') / ProductReview::where('id_product', $data->id)->get()->count();
+            }
+
+            $data->{"rating"} = round($rating, 1);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data_all
+        ], 200);
+    }
+
     public function update_tb_bb_color(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -121,9 +193,9 @@ class ApiController extends Controller
             $total_funding = $data->target;
         }
 
-        if(!$total_funding == 0){
-            $data->{"total_goal"} = round(($total_funding / $data->target ) * 100 , 2);
-        }else{
+        if (!$total_funding == 0) {
+            $data->{"total_goal"} = round(($total_funding / $data->target) * 100, 2);
+        } else {
             $data->{"total_goal"} = 0;
         }
 
@@ -147,11 +219,11 @@ class ApiController extends Controller
         $data->{"product_variant"} = $product_variant;
 
         $rating = 0;
-        if(!ProductReview::where('id_product', $id)->get()->count() == 0){
+        if (!ProductReview::where('id_product', $id)->get()->count() == 0) {
             $rating = ProductReview::where('id_product', $id)->get()->sum('rating') / ProductReview::where('id_product', $id)->get()->count();
         }
 
-        $data->{"rating"} = round($rating , 1);
+        $data->{"rating"} = round($rating, 1);
 
 
         return response()->json([
@@ -172,6 +244,43 @@ class ApiController extends Controller
                 'post' => $post,
                 'news' => $news,
                 'tips' => $tips,
+            ]
+        ], 200);
+    }
+
+    public function funding(Request $request)
+    {
+        $campaign_baru = Project::orderBy('created_at', 'desc')->offset(0)->limit(3)->get();
+        foreach ($campaign_baru as $data) {
+            $total_funding = ProjectFunding::where('id_project', $data->id)->sum('amount');
+            if ($total_funding > $data->target) {
+                $total_funding = $data->target;
+            }
+            if (!$total_funding == 0) {
+                $data->{"total_goal"} = round(($total_funding / $data->target) * 100, 2);
+            } else {
+                $data->{"total_goal"} = 0;
+            }
+        }
+
+        $trending_campaign  = Project::all();
+        foreach ($trending_campaign  as $data) {
+            $total_funding = ProjectFunding::where('id_project', $data->id)->sum('amount');
+            if ($total_funding > $data->target) {
+                $total_funding = $data->target;
+            }
+            if (!$total_funding == 0) {
+                $data->{"total_goal"} = round(($total_funding / $data->target) * 100, 2);
+            } else {
+                $data->{"total_goal"} = 0;
+            }
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'trending_campaign ' => $trending_campaign,
+                'campaign_baru' => $campaign_baru,
             ]
         ], 200);
     }

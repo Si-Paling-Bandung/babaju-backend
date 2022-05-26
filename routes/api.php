@@ -29,8 +29,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 // ======================================== Others =======================================
-Route::get('/landing', [ApiController::class, 'landing']);
-Route::get('/waAdmin', [ApiController::class, 'waAdmin']);
 
 // ================================== Wrong Token ByPass =================================
 Route::get('/wrongToken', function () {
@@ -47,6 +45,9 @@ Route::get('/wrongToken', function () {
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
+    Route::get('/home', [ApiController::class, 'home']);
+    Route::post('/search', [ApiController::class, 'search']);
+
     // ================================== Authentication =================================
     Route::get('/logout', [AuthController::class, 'logout']);
 
@@ -57,6 +58,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/product/{id}', [ApiController::class, 'detail_produk']);
 
     // ====================================== Funding ======================================
+    Route::get('/funding', [ApiController::class, 'funding']);
     Route::get('/funding/{id}', [ApiController::class, 'detail_funding']);
 
     // ====================================== Komunitas ======================================
