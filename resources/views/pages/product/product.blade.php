@@ -9,19 +9,11 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('user') }}",
+                    url: "{{ route('product') }}",
                 },
                 columns: [{
                         data: 'name',
                         name: 'name'
-                    },
-                    {
-                        data: 'username',
-                        name: 'username'
-                    },
-                    {
-                        data: 'role',
-                        name: 'role'
                     },
                     {
                         data: 'action',
@@ -48,16 +40,16 @@
 @endpush
 
 @extends('layouts.admin')
-@section('title', 'User Management')
+@section('title', 'Product Management')
 
 @section('main-content')
     <!-- Page Heading -->
 
     <nav class="navbar navbar-light px-0 py-3">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('User Management') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Product Management') }}</h1>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="{{ route('user.create') }}" class="btn btn-dark border-0">New User</a>
+                <a href="{{ route('product.create') }}" class="btn btn-dark border-0">New Product</a>
             </li>
         </ul>
     </nav>
@@ -88,7 +80,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-danger">Users</h6>
+                    <h6 class="m-0 font-weight-bold text-danger">Products</h6>
                 </div>
 
                 <div class="card-body">
@@ -97,8 +89,6 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Username</th>
-                                <th>Role</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>

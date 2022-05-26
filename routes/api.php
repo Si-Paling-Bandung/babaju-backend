@@ -53,13 +53,25 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // ====================================== History ======================================
     Route::post('/profile/update/tb-bb-color', [ApiController::class, 'update_tb_bb_color']);
 
+    // ====================================== Product ======================================
+    Route::get('/product/{id}', [ApiController::class, 'detail_produk']);
+
+    // ====================================== Funding ======================================
+    Route::get('/funding/{id}', [ApiController::class, 'detail_funding']);
+
+    // ====================================== Komunitas ======================================
+    Route::get('/berita/{id}', [ApiController::class, 'detail_berita']);
+
+    // ====================================== Education ======================================
+    Route::get('/tips/{id}', [ApiController::class, 'detail_tips']);
 
 
 
 
 
 
-    
+
+
 
 
 

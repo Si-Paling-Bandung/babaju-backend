@@ -34,6 +34,13 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
+
+
+use App\Models\Education;
+use App\Models\Product;
+use App\Models\Thread;
+use App\Models\Project;
+
 class ApiController extends Controller
 {
     public function update_tb_bb_color(Request $request)
@@ -61,6 +68,42 @@ class ApiController extends Controller
             'status' => 'success',
             'message' => 'You have successfully update your profile !',
             'data' => $user
+        ], 200);
+    }
+
+    public function detail_tips(Request $request, $id)
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'You have successfully update your profile !',
+            'data' => Education::find($id),
+        ], 200);
+    }
+
+    public function detail_berita(Request $request, $id)
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'You have successfully update your profile !',
+            'data' => Thread::find($id),
+        ], 200);
+    }
+
+    public function detail_funding(Request $request, $id)
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'You have successfully update your profile !',
+            'data' => Project::find($id),
+        ], 200);
+    }
+
+    public function detail_produk(Request $request, $id)
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'You have successfully update your profile !',
+            'data' => Product::find($id),
         ], 200);
     }
 }
