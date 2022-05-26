@@ -16,6 +16,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+
+    <!-- Favicon -->
+    <link href="{{ asset('img/logo.png') }}" rel="icon" type="image/png">
+
     <!-- Styles -->
     <style>
         html,
@@ -27,28 +31,35 @@
             height: 100vh;
             margin: 0;
         }
+
         .full-height {
             height: 100vh;
         }
+
         .flex-center {
             align-items: center;
             display: flex;
             justify-content: center;
         }
+
         .position-ref {
             position: relative;
         }
+
         .top-right {
             position: absolute;
             right: 10px;
             top: 18px;
         }
+
         .content {
             text-align: center;
         }
+
         .title {
             font-size: 84px;
         }
+
         .links>a {
             color: #636b6f;
             padding: 0 25px;
@@ -58,9 +69,11 @@
             text-decoration: none;
             text-transform: uppercase;
         }
+
         .m-b-md {
             margin-bottom: 30px;
         }
+
     </style>
 </head>
 
@@ -83,8 +96,6 @@
         <div class="content">
             <div class="title m-b-md">
                 <img src="{{ asset('img/logo.png') }}" rel="icon" type="image/png" alt="" width="500px">
-                <img src="{{ asset('img/logo-pn.png') }}" rel="icon" type="image/png" alt="" width="500px">
-
             </div>
         </div>
     </div>
@@ -93,22 +104,22 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
     <script>
         VANTA.BIRDS({
-          el: "#vanta-container",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          backgroundColor: 0xffffff,
-          color2: 0xff00,
-          colorMode: "lerp",
-          birdSize: 0.50,
-          wingSpan: 40.00,
-          speedLimit: 10.00
+            el: "#vanta-container",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0xffffff,
+            color2: 0xff00,
+            colorMode: "lerp",
+            birdSize: 0.50,
+            wingSpan: 40.00,
+            speedLimit: 10.00
         })
-        </script>
+    </script>
 </body>
 
 </html>

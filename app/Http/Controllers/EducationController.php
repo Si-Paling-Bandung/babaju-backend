@@ -22,7 +22,7 @@ class EducationController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('forum.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
+                    $button = '<a data-toggle="confirmation" data-singleton="true" data-popout="true" href="' . route('education.delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"' . "onclick='return'" . '>Delete</a>';
                     return $button;
                 })->addColumn('photo', function ($data) {
                     return '<img src="' . Storage::url($data->cover_image) . '" width="100px" height="100px" />';

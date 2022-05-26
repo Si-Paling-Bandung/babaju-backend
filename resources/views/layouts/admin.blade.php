@@ -42,7 +42,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="{{ asset('img/logo.png') }}" rel="icon" type="image/png" alt="" width="125px">
+                    <img src="{{ asset('img/logo.png') }}" rel="icon" type="image/png" alt="" height="50px">
                 </div>
             </a>
 

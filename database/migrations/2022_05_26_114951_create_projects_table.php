@@ -23,8 +23,8 @@ class CreateProjectsTable extends Migration
             $table->string('lat');
             $table->string('lang');
             $table->string('location');
-            $table->string('attachment');
-            $table->string('status');
+            $table->string('attachment')->nullable();
+            $table->string('status')->default('publish');
             $table->timestamps();
             $table->softDeletes();
 

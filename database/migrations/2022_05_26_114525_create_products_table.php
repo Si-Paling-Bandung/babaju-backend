@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('type');
+            $table->string('status')->default('publish');
             $table->timestamps();
             $table->softDeletes();
 
