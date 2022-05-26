@@ -22,14 +22,15 @@ class DatabaseSeeder extends Seeder
                 'last_name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'role' => 'admin',
-                'role' => 'admin',
+                'phone_number' => '1234',
                 'password' => bcrypt('password'),
             ],
             [
                 'first_name' => 'user',
                 'last_name' => 'user',
                 'email' => 'user@gmail.com',
-                'role' => 'uuser',
+                'role' => 'user',
+                'phone_number' => '1235',
                 'password' => bcrypt('password'),
             ],
         ];
