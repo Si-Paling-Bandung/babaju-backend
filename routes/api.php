@@ -24,6 +24,8 @@ use App\Http\Controllers\ApiController;
 // ================================= Public Routes =======================================
 // =======================================================================================
 
+Route::get('chart', 'AuthController@index')->name('api.chart');
+
 // ==================================== Authentication ===================================
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);

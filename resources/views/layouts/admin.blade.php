@@ -277,6 +277,7 @@
 
     @stack('script')
     @stack('third_party_scripts')
+    @yield('scripts')
 </body>
 
 </html>

@@ -12,9 +12,21 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rule;
 use App\Models\Log;
 use App\Models\Instance;
+use App\Speed;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        Speed::create(['speed' => rand(20, 200)]);
+
+        $speeds = Speed::latest()->take(30)->get()->sortBy('id');
+        $labels = $speeds->pluck('id');
+        $data = $speeds->pluck('speed');
+
+        return response()->json(compact('labels', 'data'));
+    }
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
