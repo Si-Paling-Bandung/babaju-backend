@@ -37,6 +37,7 @@ Other: GitHub, Visual Studio Code, Composer, NPM, Postman, Apache
 - Rename or copy `.env.example` file to `.env`
 - Run `php artisan key:generate`
 - Set your database credentials in your `.env` file
+- Run `php artisan migrate --seed`
 - Run `php artisan storage:link`
 
 Tutorial from M. Faiz Triputra : https://www.youtube.com/watch?v=Sv3GmVoedMQ&t=173s
